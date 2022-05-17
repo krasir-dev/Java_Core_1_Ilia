@@ -101,9 +101,13 @@ public class HomeWork_Lesson4 {
     public static boolean isWinner(String[][] field, String turn) {
         int rowCheck;
         int columnCheck;
+        int diagonalCheckLeft=0;
+        int diagonalCheckRight=0;
         for (int i = 0; i < field.length; i++) {
             columnCheck=0;
             rowCheck=0;
+//            diagonalCheckLeft=0;
+//            diagonalCheckRight=0;
             for (int j = 0; j < field[0].length; j++) {
                 if (field[i][j].equals(turn)) {
                     columnCheck++;
@@ -111,8 +115,14 @@ public class HomeWork_Lesson4 {
                 if (field[j][i].equals(turn)) {
                     rowCheck++;
                 }
+                if (i == j && field[j][i].equals(turn)){
+                    diagonalCheckLeft++;
+                }
+                if (i + j == field.length - 1 && field[j][i].equals(turn)){
+                    diagonalCheckRight++;
+                }
             }
-            if (columnCheck == field.length || rowCheck == field.length){
+            if (columnCheck == field.length || rowCheck == field.length || diagonalCheckLeft == field.length || diagonalCheckRight == field.length){
                 return true;
             }
         }
