@@ -5,12 +5,24 @@ import java.util.Scanner;
 
 public class HomeWork_Lesson4 {
     public static void main(String[] args) {
-        String[][] field = initField(3);
+        Scanner sc = new Scanner(System.in);
+        int y;
+        System.out.println("Выберите цифрой рзмер поля");
+        int x = sc.nextInt();
+        if (x == 3) {
+            y=3;
+        }
+        else{
+            System.out.println("Выберите количество фишек");
+            y = sc.nextInt();
+        }
+
+        String[][] field = initField(x);
         printField(field);
 
         while (true) {
             humanMakeTurn(field);
-            if (isWinner(field, "X")) {
+            if (isWinner(field, "X",y)) {
                 printField(field);
                 System.out.println("X выйграл!");
                 break;
@@ -22,7 +34,7 @@ public class HomeWork_Lesson4 {
             //printField(field);
             aiMakeTurn(field);
             printField(field);
-            if (isWinner(field, "0")) {
+            if (isWinner(field, "0",y)) {
                 System.out.println("0 выйграл!");
                 break;
             }
@@ -98,7 +110,7 @@ public class HomeWork_Lesson4 {
     }
 
     //проверка победы
-    public static boolean isWinner(String[][] field, String turn) {
+    public static boolean isWinner(String[][] field, String turn, int counter) {
         int rowCheck;
         int columnCheck;
         int diagonalCheckLeft=0;
@@ -122,7 +134,7 @@ public class HomeWork_Lesson4 {
                     diagonalCheckRight++;
                 }
             }
-            if (columnCheck == field.length || rowCheck == field.length || diagonalCheckLeft == field.length || diagonalCheckRight == field.length){
+            if (columnCheck == counter || rowCheck == counter || diagonalCheckLeft == counter || diagonalCheckRight == counter){
                 return true;
             }
         }
