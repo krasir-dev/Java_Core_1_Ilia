@@ -18,7 +18,7 @@ public class Main {
                 System.out.println("Кот " + cat.getName() + " голоден");
             }
         }
-
+        plate.increaseFood(26);
 
     }
 }

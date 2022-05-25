@@ -25,7 +25,8 @@ public class Plate {
         return result;
     }
 
-    public void increase(int amount) {
+    public void increaseFood(int amount) {
         food += amount;
+        System.out.println("Food amount " + food);
     }
 }
