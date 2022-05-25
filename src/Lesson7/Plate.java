@@ -24,4 +24,8 @@ public class Plate {
         }
         return result;
     }
+
+    public void increase(int amount) {
+        food += amount;
+    }
 }
